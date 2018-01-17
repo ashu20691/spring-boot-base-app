@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Employee Management</title>
 </head>
-<jsp:include page="../home.jsp"/>
+<jsp:include page="../template.jsp"/>
 <body>
 <!-- &nbsp;<a href="/employees/add" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>Add Employee</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 <form action="/employees/find" method="get">
@@ -30,9 +30,10 @@
                     <thead class="thead-inverse">
                     <tr>
                         <th >EmpNo</th>
-                        <th >Company ID</th>
+                        <th >Email</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Education</th>
                     </tr>
                     </thead>
 
@@ -40,9 +41,10 @@
                     <c:forEach items="${listemp.content}" var="employee">
                         <tr>
                             <td>${employee.empNo}</td>
-                            <td>${employee.companyId}</td>
+                            <td>${employee.email}</td>
                             <td>${employee.firstName}</td>
                             <td>${employee.lastName}</td>
+                            <td>${employee.education}</td>
                         </tr>
                     </c:forEach>
                 </table>

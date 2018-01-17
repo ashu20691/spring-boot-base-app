@@ -35,11 +35,5 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 
-	@Bean
-	public MessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
 
 }

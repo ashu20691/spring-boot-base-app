@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>EM-Find Employee</title>
 </head>
-<jsp:include page="../home.jsp"/>
+<jsp:include page="../template.jsp"/>
 <body>
 <h2>Employee information</h2>
 <a href="/employees/find/${employee.empNo}"></a>
@@ -14,18 +14,20 @@
     <thead class="thead-inverse">
     <tr>
         <th >EmpNo</th>
-        <th >Company ID</th>
+        <th >Email</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Education</th>
     </tr>
     </thead>
 
 
         <tr>
             <td>${employee.empNo}</td>
-            <td>${employee.companyId}</td>
+            <td>${employee.email}</td>
             <td>${employee.firstName}</td>
             <td>${employee.lastName}</td>
+            <td>${employee.education}</td>
            </tr>
 </table>
 
