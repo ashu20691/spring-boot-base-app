@@ -1,32 +1,27 @@
 package com.example.controller;
 
 
-import java.util.List;
-
-import javax.validation.Valid;
-
+import com.example.model.Employee;
+import com.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.upwork.employee.enity.Employee;
-import com.upwork.employee.service.EmployeeService;
+import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
-@RequestMapping("/welcome")
 public class EmployeeController {
 
     @Autowired
@@ -51,11 +46,11 @@ public class EmployeeController {
     }
     
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
-    public ModelAndView getEmployeesList(){
+    public ResponseEntity<List<Employee>> getEmployeesList(){
     	List<Employee> results = this.employeeService.findEmployees();
-        ModelAndView model1 = new ModelAndView("/employees/list");
+        ModelAndView model1 = new ModelAndView("employees");
         model1.addObject("listemp", results);
-        return model1;
+        return new ResponseEntity<List<Employee>>(results, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/employees/add", method = RequestMethod.GET)
@@ -65,13 +60,14 @@ public class EmployeeController {
     }
     
     @RequestMapping(value = "/employees/save", method = RequestMethod.POST)
-    public String processAdd(@Valid @ModelAttribute("employee")Employee employee,
+    public String processAdd(@Valid @RequestBody Employee employee,
     	      BindingResult result, ModelMap model) {
     	if(result.hasErrors()) {
-            return "employees/add";
+            System.out.println(result.getAllErrors());
+//            return "employees/add";
     	}
          this.employeeService.saveEmployee(employee);
-         return "redirect:/welcome/employees";
+         return "redirect:/employees";
     }
     
     @RequestMapping(value = "/employees/edit/{empNo}", method = RequestMethod.GET)
@@ -98,11 +94,5 @@ public class EmployeeController {
         return "employees/find";
     }
     
-//	@RequestMapping(value="/employees/delete/{empNo}", method = RequestMethod.GET)
-//    public String removeEmployee(@ModelAttribute("employee")Employee employee, BindingResult result, ModelMap model) {
-////		Employee employee1=this.employeeService.findEmployeeById(empNo);
-//		this.employeeService.deleteEmployee(employee);
-//		 return "redirect:/welcome/employees";
-//    }	
-//	
+
 }

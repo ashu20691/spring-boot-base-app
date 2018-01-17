@@ -1,10 +1,9 @@
 package com.example.service;
 
+import com.example.model.Employee;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import com.upwork.employee.enity.Employee;
 
 import java.util.List;
 

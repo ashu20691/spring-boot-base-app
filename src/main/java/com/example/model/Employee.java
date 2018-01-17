@@ -1,21 +1,21 @@
 package com.example.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @NamedQuery(name="Employee.findByEmpNo",
                 query="SELECT e FROM Employee e WHERE empNo = :empNo")
 @Table(name="employees")
-public class Employee {
-	
+public class Employee implements Serializable {
+
 	@Id
+	@GeneratedValue
+	Long id;
+	
 	@Column(name="empNo")
 	private long empNo;
 	

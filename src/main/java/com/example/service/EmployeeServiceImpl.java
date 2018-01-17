@@ -1,18 +1,17 @@
 package com.example.service;
 
-import java.util.List;
-
+import com.example.model.Employee;
+import com.example.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.upwork.employee.enity.Employee;
-import com.upwork.employee.repository.EmployeeRepository;
+import java.util.List;
 
 
-@Service
+@Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	    private static final int PAGE_SIZE = 10;
