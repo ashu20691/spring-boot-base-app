@@ -59,8 +59,6 @@ public class EmployeeController {
     @RequestMapping(value = "/export", method = RequestMethod.GET)
     public StreamingResponseBody export(HttpServletResponse response) throws IOException {
         List<Employee> results = this.employeeService.findEmployees();
-        System.out.println("size.......................");
-        System.out.println(results.size());
         response.setContentType("application/csv");
         response.setHeader("Content-Disposition", "attachment; filename=\"employee.csv\"");
         File file = File.createTempFile("employee", ".csv");
@@ -70,7 +68,6 @@ public class EmployeeController {
 
         results.forEach((e) -> {
             try {
-                System.out.println(e.getId());
                 fw.write(e.getId() + "," + e.getEmail() + "," + e.getFirstName() + "," + e.getLastName() + "," + e.getEducation());
                 fw.write("\n");
             } catch (IOException err) {
