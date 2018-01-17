@@ -6,46 +6,84 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Employee Management</title>
-    <style type="text/css"> 
- 		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;} 
- 		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} 
- 		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
- 		.tg .tg-4eph{background-color:#f9f9f9} 
-	</style> 
-	<link type="text/css" href="/css/bootstrap.css" rel="stylesheet" />
+    <title>Employee Management</title>
+    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">--%>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>--%>
+    <%--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
+    <%--<style type="text/css">--%>
+        <%--.tg {--%>
+            <%--border-collapse: collapse;--%>
+            <%--border-spacing: 0;--%>
+            <%--border-color: #ccc;--%>
+        <%--}--%>
+
+        <%--.tg td {--%>
+            <%--font-family: Arial, sans-serif;--%>
+            <%--font-size: 14px;--%>
+            <%--padding: 10px 5px;--%>
+            <%--border-style: solid;--%>
+            <%--border-width: 1px;--%>
+            <%--overflow: hidden;--%>
+            <%--word-break: normal;--%>
+            <%--border-color: #ccc;--%>
+            <%--color: #333;--%>
+            <%--background-color: #fff;--%>
+        <%--}--%>
+
+        <%--.tg th {--%>
+            <%--font-family: Arial, sans-serif;--%>
+            <%--font-size: 14px;--%>
+            <%--font-weight: normal;--%>
+            <%--padding: 10px 5px;--%>
+            <%--border-style: solid;--%>
+            <%--border-width: 1px;--%>
+            <%--overflow: hidden;--%>
+            <%--word-break: normal;--%>
+            <%--border-color: #ccc;--%>
+            <%--color: #333;--%>
+            <%--background-color: #f0f0f0;--%>
+        <%--}--%>
+
+        <%--.tg .tg-4eph {--%>
+            <%--background-color: #f9f9f9--%>
+        <%--}--%>
+    <%--</style>--%>
+    <%--<link type="text/css" href="css/bootstrap.css" rel="stylesheet"/>--%>
 </head>
 <jsp:include page="../home.jsp"/>
 <body>
+<div class="container-fluid">
+    <div class="row">
+        <h2>Employee List</h2>
 
-<h2>Employee List</h2>
+        <c:if test="${!empty listemp}">
+            <table class="table table-sm">
+                <thead class="thead-inverse">
+                <tr>
+                    <th width="70">EmpNo</th>
+                    <th width="70">Company Id</th>
+                    <th width="120">First Name</th>
+                    <th width="120">Last Name</th>
+                        <%--<th width="120">Edit</th>--%>
+                        <%--<th width="120">Delete</th>--%>
 
-<c:if test="${!empty listemp}">
-	<table class="table table-sm">
-	<thead class="thead-inverse">
-	<tr>
-		<th width="70">EmpNo</th>
-		<th width="70">Company Id</th>
-        <th width="120">First Name</th>
-        <th width="120">Last Name</th>
-        <th width="120">Edit</th>
-        <th width="120">Delete</th>
-       
-	</tr>
-	</thead>
-	<c:forEach items="${listemp}" var="employee">
-		<tr>
-		   <td>${employee.empNo}</td>
-		   <td>${employee.companyId}</td>
-            <td>${employee.firstName}</td>
-			<td>${employee.lastName}</td>
-  <td><a href="/welcome/employees/edit/${employee.empNo}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
-  <td><a href="/welcome/employees/delete/${employee.empNo}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Delete</a> </td>
-		</tr>
-	</c:forEach>
-	</table>
-</c:if>
-<script type="application/javascript" src="js/jquery.js"></script>
-    <script type="application/javascript" src="js/bootstrap.js"></script>
+                </tr>
+                </thead>
+                <c:forEach items="${listemp}" var="employee">
+                    <tr>
+                        <td>${employee.empNo}</td>
+                        <td>${employee.companyId}</td>
+                        <td>${employee.firstName}</td>
+                        <td>${employee.lastName}</td>
+                            <%--<td><a href="/employees/edit/${employee.empNo}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>--%>
+                            <%--<td><a href="/employees/delete/${employee.empNo}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Delete</a> </td>--%>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+    </div>
+</div>
+<%--<script type="application/javascript" src="js/jquery.js"></script>--%>
+<%--<script type="application/javascript" src="js/bootstrap.js"></script>--%>
 </body>
 </html>

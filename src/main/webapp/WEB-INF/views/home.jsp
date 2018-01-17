@@ -6,10 +6,10 @@
   <title>Manage Employee</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link type="text/css" href="/css/bootstrap-theme.css" rel="stylesheet" />
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <%--<link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet" />--%>
   
   
 </head>
@@ -21,12 +21,9 @@
       <a class="navbar-brand" href="">Employee Management</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class=""><a href="/welcome/employees/pages">Employee List</a></li>
-      <li class=""><a href="/welcome1/cities/pages">City List</a></li>
-      <li class=""><a href="/welcome2/companies/pages">Company List</a></li>
-      <li class=""><a href="/welcome/employees/add">Add Employee</a></li>
-      <li class=""><a href="/welcome1/cities/add">Add City</a></li>
-      <li class=""><a href="/welcome2/companies/add">Add Company</a></li>
+      <li class=""><a href="/employees/pages">Employee List</a></li>
+      <li class=""><a href="/employees/add">Add Employee</a></li>
+      <li class=""><a href="/export">Export</a></li>
       <li class=""><a href="javascript:document.getElementById('logout').submit()">Logout</a></li>
     </ul>
     <c:url value="/logout" var="logout" />
@@ -37,8 +34,8 @@
 </c:if>
   </div>
 </nav>
-<script type="application/javascript" src="js/jquery.js"></script>
-<script type="application/javascript" src="js/bootstrap.js"></script>
+<%--<script type="application/javascript" src="js/jquery.js"></script>--%>
+<%--<script type="application/javascript" src="js/bootstrap.js"></script>--%>
 
 </body>
 </html>

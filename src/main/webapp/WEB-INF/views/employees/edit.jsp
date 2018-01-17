@@ -10,7 +10,7 @@
 <jsp:include page="../home.jsp"/>
 <body>
 <h2>Edit Employee</h2>
-<form method="POST" action="/welcome/employees/update" modelAttribute="employee" commandName="employee">
+<form method="POST" action="/employees/update" modelAttribute="employee" commandName="employee">
 <%--     <input type="hidden" name="empNo" value="${employee.empNo}"> --%>
     <table class="table table-bordered">
         <tbody>

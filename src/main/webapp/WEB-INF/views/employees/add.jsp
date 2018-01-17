@@ -12,7 +12,7 @@
 
 <body>
 <h4>&nbsp;Enter Employee Information</h4>
-<form:form method="POST" action="/welcome/employees/save" modelAttribute="employee" commandName="employee">
+<form:form method="POST" action="/employees/save" modelAttribute="employee" commandName="employee">
    <table class="table table-bordered">
     <tr>
         <td><form:label path="empNo">Employee No. </form:label></td>
@@ -33,7 +33,7 @@
    </table>
 <!--         <td colspan="2"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
             <input type="submit" value="Add Employee" class="btn btn-success"/>
-<a href="/welcome/employees/add" class="btn btn-info">Reset</a>
+<a href="/employees/add" class="btn btn-info">Reset</a>
 </form:form>
 
 <script type="application/javascript" src="js/jquery.js"></script>

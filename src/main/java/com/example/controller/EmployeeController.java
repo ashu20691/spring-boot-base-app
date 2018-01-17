@@ -36,11 +36,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String goHome() {
-        return "home";
-    }
-
     @RequestMapping(value = "/employees/pages", method = RequestMethod.GET)
     public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"firstName"}) Pageable pg) {
         Page<Employee> results = this.employeeService.findPagedEmployees(pg);
@@ -119,7 +114,7 @@ public class EmployeeController {
             return "employees/edit";
         }
         this.employeeService.saveEmployee(employee);
-        return "redirect:/welcome/employees";
+        return "redirect:/employees";
     }
 
     @RequestMapping(value = "/employees/find", method = RequestMethod.GET)
@@ -128,6 +123,4 @@ public class EmployeeController {
         model.addAttribute(employee1);
         return "employees/find";
     }
-
-
 }
