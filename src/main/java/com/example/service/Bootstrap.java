@@ -20,46 +20,48 @@ import java.util.logging.Logger;
 public class Bootstrap implements InitializingBean {
 
 
-	@Autowired
-	UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-	@Autowired
-	private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
+    @Override
+    @Transactional()
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Bootstrapping data...");
 
-	@Override
-	@Transactional()
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("Bootstrapping data...");
+        createSystemUser();
 
-		createSystemUser();
+        System.out.println("...Bootstrapping completed");
+    }
 
-		System.out.println("...Bootstrapping completed");
-	}
+    private void createSystemUser() {
 
-	private void createSystemUser() {
-
-		System.out.println("... creating system user");
-		Role userRole = roleRepository.findByRole("ADMIN");
-		if(userRole == null) {
-			Role role = new Role();
-			role.setRole("ADMIN");
-			roleRepository.saveAndFlush(role);
-		}
-		User user = new User();
-		user.setPassword("admin");
-		user.setName("admin");
-		user.setLastName("admin");
-		user.setEmail("admin@gst.com");
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setActive(1);
-		userRole = roleRepository.findByRole("ADMIN");
-		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-		userRepository.saveAndFlush(user);
-	}
+        System.out.println("... creating system user");
+        Role userRole = roleRepository.findByRole("ADMIN");
+        if (userRole == null) {
+            Role role = new Role();
+            role.setRole("ADMIN");
+            roleRepository.saveAndFlush(role);
+        }
+        User user = userRepository.findByEmail("admin@gst.com");
+        if (user == null) {
+            user = new User();
+            user.setPassword("admin");
+            user.setName("admin");
+            user.setLastName("admin");
+            user.setEmail("admin@gst.com");
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setActive(1);
+            userRole = roleRepository.findByRole("ADMIN");
+            user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+            userRepository.saveAndFlush(user);
+        }
+    }
 
 }

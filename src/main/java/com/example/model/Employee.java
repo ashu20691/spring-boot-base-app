@@ -1,6 +1,8 @@
 package com.example.model;
 
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,13 +16,12 @@ public class Employee implements Serializable {
 
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 	
 	@Column(name="empNo")
 	private long empNo;
 	
-	private long companyId
-	;
+	private long companyId;
 
 	@Column(name="firstName")
 	@NotNull
@@ -31,6 +32,43 @@ public class Employee implements Serializable {
 	@NotNull
 	@Size(min=2, max=15)
 	private String lastName;
+
+
+
+	@Column(name="email")
+	@NotNull
+	@Email
+	private String email;
+
+	@Column(name="education")
+	@NotNull
+	private String education;
+
+
+	public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public long getEmpNo() {
 		return empNo;

@@ -37,7 +37,7 @@
                 <h4 class="modal-title">Please provide employee Information</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="/action_page.php">
+                <form class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="email">Email:</label>
                         <div class="col-sm-10">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="firstName">Last Name:</label>
+                        <label class="control-label col-sm-2" for="lastName">Last Name:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
                         </div>
@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="button" id="saveEmployee" class="btn btn-default">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -136,6 +136,39 @@
         }
 
     });
+
+    $(document).ready(function() {
+        $('#saveEmployee').click(function () {
+            saveEmployee();
+        });
+    });
+
+    function saveEmployee() {
+        $.ajax({
+            url: '/employees/save',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "education": $('#education').val(),
+                "lastName": $('#lastName').val(),
+                "firstName": $('#firstName').val(),
+                "email": $('#email').val()
+            }),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                $("#myModal").modal("hide");
+//                $(window).attr('location', '/bidding/review?contentId=${content?.id}');
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                alert("ERR: " + jqXhr.responseText + errorThrown);
+                console.log(errorThrown);
+            }
+        });
+    }
+
+
+
 </script>
 </body>
 </html>
