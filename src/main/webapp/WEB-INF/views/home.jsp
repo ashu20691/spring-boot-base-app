@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>GST</title>
+    <title>GSK-CSR</title>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe-E46f1dCFCBvNnanm6K_0ZPufBa4d3A&amp;sensor=false"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

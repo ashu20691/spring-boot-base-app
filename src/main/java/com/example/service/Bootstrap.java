@@ -49,13 +49,13 @@ public class Bootstrap implements InitializingBean {
             role.setRole("ADMIN");
             roleRepository.saveAndFlush(role);
         }
-        User user = userRepository.findByEmail("admin@gst.com");
+        User user = userRepository.findByEmail("admin@gsk-csr.com");
         if (user == null) {
             user = new User();
             user.setPassword("admin");
             user.setName("admin");
             user.setLastName("admin");
-            user.setEmail("admin@gst.com");
+            user.setEmail("admin@gsk-csr.com");
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setActive(1);
             userRole = roleRepository.findByRole("ADMIN");
