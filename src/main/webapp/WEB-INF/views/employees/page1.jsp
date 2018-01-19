@@ -12,22 +12,25 @@
 <body>
 <!-- &nbsp;<a href="/employees/add" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>Add Employee</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 <form action="/employees/find" method="get">
-    <br>&nbsp;
-    <button type="submit" class="btn btn-info">Find Employee <span class="glyphicon glyphicon-search"></span></button>
-    <input name="empNo" placeholder="Employee No."/>
+    <div class="input-group">
+        <input type="text" class="form-control" name="searchText" placeholder="Search" ng-model="searchText">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Go!</button>
+      </span>
+    </div>
 </form>
 <c:url var="firstUrl" value="/pages/1"/>
 <c:url var="lastUrl" value="/pages/${Employee.totalPages}"/>
 <c:url var="prevUrl" value="/pages/${currentIndex - 1}"/>
 <c:url var="nextUrl" value="/pages/${currentIndex + 1}"/>
-<div class="container-fluid">
-    <div class="row">
+<%--<div class="container-fluid">--%>
+    <%--<div class="row">--%>
 
             <h2>Employee List</h2>
 
             <c:if test="${!empty listemp}">
-                <table class="table table-sm">
-                    <thead class="thead-inverse">
+                <table class="table table-striped" style="margin-top: 20px;">
+                    <thead>
                     <tr>
                         <th >EmpNo</th>
                         <th >Email</th>
@@ -79,8 +82,31 @@
                     </li>
                 </c:if>
             </ul>
-    </div>
-</div>
+    <%--</div>--%>
+<%--</div>--%>
+
+
+<%--<div class="container">--%>
+    <%--<ol class="breadcrumb">--%>
+        <%--<li><a href="#">Home</a></li>--%>
+        <%--<li><a href="#">Admin</a></li>--%>
+        <%--<li class="active">Employee</li>--%>
+    <%--</ol>--%>
+
+    <%--<form>--%>
+        <%--<div class="input-group">--%>
+            <%--<input type="text" class="form-control" placeholder="Search" ng-model="searchText">--%>
+      <%--<span class="input-group-btn">--%>
+        <%--<button class="btn btn-default" type="button">Go!</button>--%>
+      <%--</span>--%>
+        <%--</div>--%>
+    <%--</form>--%>
+
+    <%--<table class="table table-striped" style="margin-top: 20px;">--%>
+
+    <%--</table>--%>
+
+<%--</div>--%>
 
 
 <%--<script type="application/javascript" src="js/jquery.js"></script>--%>

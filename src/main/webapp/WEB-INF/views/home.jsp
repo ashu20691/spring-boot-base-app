@@ -6,6 +6,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe-E46f1dCFCBvNnanm6K_0ZPufBa4d3A&amp;sensor=false"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         #map_div {
@@ -24,41 +25,41 @@
 </head>
 
 <body>
-<div id="map_div"h ></div>
+<div id="map_div"></div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width:40%;">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Please provide employee Information</h4>
+                <h4 class="modal-title">Please provide the following Information</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
+                <form action="" id="registrationForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="email">Email:</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="firstName">First Name:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="lastName">Last Name:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="education">Education:</label>
+                        <label class="control-label col-sm-2" for="mobile">Mobile No.:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="education" placeholder="Enter Education">
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile No.">
                         </div>
                     </div>
 
@@ -138,7 +139,40 @@
 
     jQuery(document).ready(function() {
         $('#saveEmployee').click(function () {
-            saveEmployee();
+            if($("#registrationForm").valid()){
+                saveEmployee();
+
+            }
+        });
+
+        $("#registrationForm").validate({
+            // Specify validation rules
+            rules: {
+                // The key name on the left side is the name attribute
+                // of an input field. Validation rules are defined
+                // on the right side
+                firstName: "required",
+                lastName: "required",
+                email: {
+                    required: true,
+                    // Specify that email should be validated
+                    // by the built-in "email" rule
+                    email: true
+                },
+                mobile: {
+                    required:true,
+                    minlength:9,
+                    maxlength:10,
+                    number: true
+                }
+            },
+            // Specify validation error messages
+            messages: {
+                firstName: "Please enter your firstname",
+                lastName: "Please enter your lastname",
+                email: "Please enter a valid email address",
+                mobile : "Please enter a valid mobile number"
+            }
         });
     });
 
@@ -149,7 +183,7 @@
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify({
-                "education": $('#education').val(),
+                "mobile": $('#mobile').val(),
                 "lastName": $('#lastName').val(),
                 "firstName": $('#firstName').val(),
                 "email": $('#email').val()

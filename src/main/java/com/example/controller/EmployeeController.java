@@ -40,7 +40,7 @@ public class EmployeeController {
     public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"firstName"}) Pageable pg) {
         Page<Employee> results = this.employeeService.findPagedEmployees(pg);
         model.addAttribute("listemp", results);
-        return "/employees/page";
+        return "/employees/page1";
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
@@ -63,7 +63,7 @@ public class EmployeeController {
 
         results.forEach((e) -> {
             try {
-                fw.write(e.getId() + "," + e.getEmail() + "," + e.getFirstName() + "," + e.getLastName() + "," + e.getEducation());
+                fw.write(e.getId() + "," + e.getEmail() + "," + e.getFirstName() + "," + e.getLastName() + "," + e.getMobile());
                 fw.write("\n");
             } catch (IOException err) {
                 System.out.println(err);
@@ -118,9 +118,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employees/find", method = RequestMethod.GET)
-    public String getEmployee(@RequestParam("empNo") long empNo, Model model) {
-        Employee employee1 = this.employeeService.findEmployeeById(empNo);
-        model.addAttribute(employee1);
+    public String getEmployee(@RequestParam("searchText") String searchText, Model model) {
+        List<Employee> employees = this.employeeService.searchByEmail(searchText);
+        model.addAttribute(employees);
         return "employees/find";
     }
 }

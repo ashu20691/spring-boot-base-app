@@ -40,17 +40,17 @@ public class Employee implements Serializable {
 	@Email
 	private String email;
 
-	@Column(name="education")
+	@Column(name="mobile")
 	@NotNull
-	private String education;
+	private String mobile;
 
 
-	public String getEducation() {
-		return education;
+	public String getMobile() {
+		return mobile;
 	}
 
-	public void setEducation(String education) {
-		this.education = education;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 
