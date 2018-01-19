@@ -89,14 +89,14 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employees/save", method = RequestMethod.POST)
-    public String processAdd(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Boolean> processAdd(@Valid @RequestBody Employee employee,
                              BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
 //            return "employees/add";
         }
         this.employeeService.saveEmployee(employee);
-        return "redirect:/employees";
+        return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }
 
 
