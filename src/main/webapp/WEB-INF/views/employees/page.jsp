@@ -31,8 +31,7 @@
         <tr>
             <th >EmpNo</th>
             <th >Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>Education</th>
         </tr>
         </thead>
@@ -42,8 +41,7 @@
             <tr>
                 <td>${location.empNo}</td>
                 <td>${location.email}</td>
-                <td>${location.firstName}</td>
-                <td>${location.lastName}</td>
+                <td>${location.name}</td>
                 <td>${location.mobile}</td>
             </tr>
         </c:forEach>

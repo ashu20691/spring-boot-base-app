@@ -37,7 +37,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = {"/employees/pages","/admin"}, method = RequestMethod.GET)
-    public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"firstName"}) Pageable pg) {
+    public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"name"}) Pageable pg) {
         Page<Employee> results = this.employeeService.findPagedEmployees(pg);
         model.addAttribute("listemp", results);
         return "/employees/page";
@@ -58,12 +58,12 @@ public class EmployeeController {
         response.setHeader("Content-Disposition", "attachment; filename=\"employee.csv\"");
         File file = File.createTempFile("employee", ".csv");
         FileWriter fw = new FileWriter(file);
-        fw.write("id,email,firstName,lastName,education");
+        fw.write("id,email,name,education");
         fw.write("\n");
 
         results.forEach((e) -> {
             try {
-                fw.write(e.getId() + "," + e.getEmail() + "," + e.getFirstName() + "," + e.getLastName() + "," + e.getMobile());
+                fw.write(e.getId() + "," + e.getEmail() + "," + e.getName() + "," + e.getMobile());
                 fw.write("\n");
             } catch (IOException err) {
                 System.out.println(err);

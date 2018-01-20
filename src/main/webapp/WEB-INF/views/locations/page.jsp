@@ -6,8 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Location Management</title>
-    <style type="text/css"> 
+    <style type="text/css">
  		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;} 
  		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} 
  		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
@@ -36,6 +35,7 @@
             <th >Id</th>
             <th >Latitude</th>
             <th>Longitude</th>
+            <th>Delete</th>
         </tr>
         </thead>
 
@@ -45,6 +45,7 @@
                 <td>${location.id}</td>
                 <td>${location.lat}</td>
                 <td>${location.lng}</td>
+                <td><a href="/locations/delete/${location.id}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Delete</a> </td>
             </tr>
         </c:forEach>
     </table>

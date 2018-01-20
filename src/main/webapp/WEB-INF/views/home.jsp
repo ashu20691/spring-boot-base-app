@@ -16,6 +16,17 @@
             position: absolute;
             top: 0;
         }
+        #saveEmployee {
+            margin-top: 30%;
+            width: 70%;
+            border-radius: 25px;
+            background-color: #ff7010;
+        }
+        #registrationForm input {
+            border:none;
+            text-align:center
+        }
+
     </style>
 
     <!--<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />-->
@@ -28,50 +39,39 @@
 <div id="map_div"></div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog" style="width:40%;">
+    <div class="modal-dialog" style="width:18%;">
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Please provide the following Information</h4>
+            <div class="modal-header" style="border-bottom: none;margin-bottom: 20% ">
+                <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+                <h4 class="modal-title"><img width="7%" data-dismiss="modal" src="http://www.clker.com/cliparts/X/K/I/w/c/U/icon-previous-orange-brown-md.png"/></h4>
             </div>
             <div class="modal-body">
                 <form action="" id="registrationForm" class="form-horizontal">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="email">Email:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="NAME">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="firstName">First Name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="PHONE NO.">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="lastName">Last Name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="mobile">Mobile No.:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile No.">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="E-EMAIL">
                         </div>
                     </div>
 
+
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" id="saveEmployee" class="btn btn-default">Submit</button>
+                            <button type="button" id="saveEmployee" class="btn">Submit</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -161,8 +161,7 @@
                 // The key name on the left side is the name attribute
                 // of an input field. Validation rules are defined
                 // on the right side
-                firstName: "required",
-                lastName: "required",
+                name: "required",
                 email: {
                     required: true,
                     // Specify that email should be validated
@@ -178,8 +177,7 @@
             },
             // Specify validation error messages
             messages: {
-                firstName: "Please enter your firstname",
-                lastName: "Please enter your lastname",
+                name: "Please enter your name",
                 email: "Please enter a valid email address",
                 mobile : "Please enter a valid mobile number"
             }
@@ -194,8 +192,7 @@
             contentType: 'application/json',
             data: JSON.stringify({
                 "mobile": $('#mobile').val(),
-                "lastName": $('#lastName').val(),
-                "firstName": $('#firstName').val(),
+                "name": $('#name').val(),
                 "email": $('#email').val()
             }),
             processData: false,

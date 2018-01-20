@@ -23,17 +23,10 @@ public class Employee implements Serializable {
 	
 	private long companyId;
 
-	@Column(name="firstName")
+	@Column(name="name")
 	@NotNull
 	@Size(min=2, max=15)
-	private String firstName;
-
-	@Column(name="lastName")
-	@NotNull
-	@Size(min=2, max=15)
-	private String lastName;
-
-
+	private String name;
 
 	@Column(name="email")
 	@NotNull
@@ -86,21 +79,13 @@ public class Employee implements Serializable {
 		this.companyId = companyId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	
 }

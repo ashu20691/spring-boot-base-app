@@ -84,6 +84,12 @@ public class LocationController {
             return "locations/edit";
         }
         this.locationRepository.save(location);
-        return "redirect:/locations";
+        return "redirect:/locations/pages";
+    }
+
+    	@RequestMapping(value="/locations/delete/{id}", method = RequestMethod.GET)
+    public String removeEmployee(@PathVariable("id")Integer id) {
+		locationRepository.delete(id);
+            return "redirect:/locations/pages";
     }
 }
