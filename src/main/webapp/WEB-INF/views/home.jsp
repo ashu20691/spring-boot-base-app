@@ -84,58 +84,68 @@
      */
     var map;
 
-    /*
-     * use google maps api built-in mechanism to attach dom events
-     */
-    google.maps.event.addDomListener(window, "load", function () {
 
-        /*
-         * create map
-         */
-        var map = new google.maps.Map(document.getElementById("map_div"), {
-            center: new google.maps.LatLng(33.808678, -117.918921),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        /*
-         * create infowindow (which will be used by markers)
-         */
-        var infoWindow = new google.maps.InfoWindow();
-
-        /*
-         * marker creater function (acts as a closure for html parameter)
-         */
-        function createMarker(options, html) {
-            var marker = new google.maps.Marker(options);
-            if (html) {
-                google.maps.event.addListener(marker, "click", function () {
-                    infoWindow.setContent(html);
-                    infoWindow.open(options.map, this);
-                });
-            }
-            return marker;
+    $.ajax({
+        url: '/locations',
+        type: 'get',
+        success: function (data, textStatus, jQxhr) {
+            initMap(data)
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert("ERR: " + jqXhr.responseText + errorThrown);
+            console.log(errorThrown);
         }
-
-        /*
-         lat and lng
-         */
-        var markersData = [[33.808678, -117.918921], [33.818038, -117.928492], [33.803333, -117.915278], [33.803000, -117.915500]]
-
-
-        /*
-         * add markers to map
-         */
-
-        for (var i = 0; i < markersData.length; i++) {
-            createMarker({
-                position: new google.maps.LatLng(markersData[i][0], markersData[i][1]),
-                map: map,
-                icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-green.png"
-            }, "<h1>Hi {{name}}</h1><p>This is {{location}}}.</p><button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal'>Add Information</button>");
-        }
-
     });
+
+    function initMap(markersData){
+        /*
+         * use google maps api built-in mechanism to attach dom events
+         */
+        google.maps.event.addDomListener(window, "load", function () {
+
+            /*
+             * create map
+             */
+            var map = new google.maps.Map(document.getElementById("map_div"), {
+                center: new google.maps.LatLng(33.808678, -117.918921),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            /*
+             * create infowindow (which will be used by markers)
+             */
+            var infoWindow = new google.maps.InfoWindow();
+
+            /*
+             * marker creater function (acts as a closure for html parameter)
+             */
+            function createMarker(options, html) {
+                var marker = new google.maps.Marker(options);
+                if (html) {
+                    google.maps.event.addListener(marker, "click", function () {
+                        infoWindow.setContent(html);
+                        infoWindow.open(options.map, this);
+                    });
+                }
+                return marker;
+            }
+
+
+            /*
+             * add markers to map
+             */
+
+            for (var i = 0; i < markersData.length; i++) {
+                createMarker({
+                    position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
+                    map: map,
+                    icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-green.png"
+                }, "<h1>Hi Folk</h1><p>Want to Volunteer?.</p><a href='#' class='' data-toggle='modal' data-target='#myModal'>Please Click here to add yourself</a>");
+            }
+
+        });
+    }
 
     jQuery(document).ready(function() {
         $('#saveEmployee').click(function () {

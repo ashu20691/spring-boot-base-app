@@ -36,7 +36,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(value = "/employees/pages", method = RequestMethod.GET)
+    @RequestMapping(value = {"/employees/pages","/admin"}, method = RequestMethod.GET)
     public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"firstName"}) Pageable pg) {
         Page<Employee> results = this.employeeService.findPagedEmployees(pg);
         model.addAttribute("listemp", results);

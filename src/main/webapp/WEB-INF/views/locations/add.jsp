@@ -23,7 +23,7 @@
         </tr>
     </table>
     <!-- <td colspan="2"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-    <input type="submit" value="Add Employee" class="btn btn-success"/>
+    <input type="submit" value="Add Location" class="btn btn-success"/>
     <a href="/locations/add" class="btn btn-info">Reset</a>
 </form:form>
 </body>

@@ -5,38 +5,47 @@ import javax.persistence.*;
 @Entity
 @Table(name = "location")
 public class Location {
-	@Id
+
+   public Location(){}
+
+    public Location(Double lat, Double lng) {
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    private int id;
 
-	@Column(name="lat")
-	private String lat;
+    @Column(name = "lat")
+    private Double lat;
 
-	@Column(name="lng")
-	private String lng;
+    @Column(name = "lng")
+    private Double lng;
 
-	public String getLat() {
-		return lat;
-	}
+    public Double getLat() {
+        return lat;
+    }
 
-	public void setLat(String lat) {
-		this.lat = lat;
-	}
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
 
-	public String getLng() {
-		return lng;
-	}
+    public Double getLng() {
+        return lng;
+    }
 
-	public void setLng(String lng) {
-		this.lng = lng;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
 }
