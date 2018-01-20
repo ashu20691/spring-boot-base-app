@@ -40,7 +40,7 @@ public class EmployeeController {
     public String showPages(Model model, @PageableDefault(page = 0, size = 20, direction = Direction.ASC, sort = {"firstName"}) Pageable pg) {
         Page<Employee> results = this.employeeService.findPagedEmployees(pg);
         model.addAttribute("listemp", results);
-        return "/employees/page1";
+        return "/employees/page";
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)

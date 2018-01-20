@@ -23,13 +23,13 @@
         </thead>
 
 
-        <c:forEach items="${employees.content}" var="employee">
+        <c:forEach items="${employees.content}" var="location">
             <tr>
-                <td>${employee.empNo}</td>
-                <td>${employee.email}</td>
-                <td>${employee.firstName}</td>
-                <td>${employee.lastName}</td>
-                <td>${employee.mobile}</td>
+                <td>${location.empNo}</td>
+                <td>${location.email}</td>
+                <td>${location.firstName}</td>
+                <td>${location.lastName}</td>
+                <td>${location.mobile}</td>
             </tr>
         </c:forEach>
     </table>
