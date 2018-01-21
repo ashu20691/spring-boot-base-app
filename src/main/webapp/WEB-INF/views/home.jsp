@@ -106,18 +106,19 @@
     var map;
 
     var popup = '<div class="cotainer" style="width: 100%">  <div class="panel">    <div class="panel-heading">' +
-            '      <div class=""><big><strong style="color:#ff7010">Mid day meal Programs</strong></big></div>' +
-            '      <div> Partner: The Akshaya Patra Foundation</div>    </div>  ' +
+            '      <div class=""><big><strong style="color:#ff7010">PROGRAM_DETAILS</strong></big></div>' +
+            '      <div> Partner: PROJECT_PARTNER</div>    </div>  ' +
             '  <hr style="border-color: #ff7010">    <div class="panel-body">   ' +
             '   <div><span style="background-color:#ff7010;color:white;padding:0.5%;padding-right: 1%">' +
             '<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/303335-200.png" width="2%" style="margin-left: 1%;margin-right: 1%"/><strong> Program strategy:</strong></span></div>      <br/>      <ul>        <li>Providig fortified nutritious food to school children through mid-day meal programme everyday</li>   ' +
             '     <li> Providing milk to the children thrice a week</li>     ' +
-            '   <li> Focus on improving school performance, student retention and drop out rates      </ul> ' +
+            '   <li> Focus on improving school performance, student retention and drop out rates </li> ' +
+            '    </ul> ' +
             '     <div class="row-fluid">        ' +
-            '<div class="col-sm-3 slant" style="background-color:#ff7010;color:white;padding:0.5%">  ' +
+            '<div class="col-sm-3" style="background-color:#ff7010;color:white;padding:0.5%">  ' +
             '        <div><strong>Target stackeholder/s</strong></div>          <div>Gorvernment school children</div>  ' +
             '      </div>        <div class="col-sm-4">          <div><strong>Location/s</strong></div>       ' +
-            '   <div>Hubli, Karnataka</div>        </div>        <div class="col-sm-4 slant" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
+            '   <div>EVENT_LOCATION</div>        </div>        <div class="col-sm-4" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
             '   <div class="col-sm-offset-4 col-sm-12">          <button type="button" id="volunteer" class="btn" data-toggle="modal" data-target="#myModal">VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
 
 
@@ -143,8 +144,8 @@
              * create map
              */
             var map = new google.maps.Map(document.getElementById("map_div"), {
-                center: new google.maps.LatLng(33.808678, -117.918921),
-                zoom: 14,
+                center: new google.maps.LatLng(28.631451, 77.216667),
+                zoom: 5,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
@@ -177,7 +178,9 @@
                     position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
                     map: map,
                     icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-orange.png"
-                }, popup);
+                }, popup.replace("EVENT_LOCATION",markersData[i].geographic).
+                        replace("PROJECT_PARTNER",markersData[i].projectPartner).
+                        replace("PROGRAM_DETAILS",markersData[i].program));
             }
 
         });
