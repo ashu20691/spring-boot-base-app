@@ -6,11 +6,16 @@ import javax.persistence.*;
 @Table(name = "location")
 public class Location {
 
-   public Location(){}
+    public Location() {
+    }
 
-    public Location(Double lat, Double lng) {
+
+    public Location(Double lat, Double lng, String program, String geographic, String projectPartner) {
         this.lat = lat;
         this.lng = lng;
+        this.program = program;
+        this.geographic = geographic;
+        this.projectPartner = projectPartner;
     }
 
     @Id
@@ -22,6 +27,40 @@ public class Location {
 
     @Column(name = "lng")
     private Double lng;
+
+    @Column(name = "program")
+    private String program;
+
+    @Column(name = "geographic")
+    private String geographic;
+
+    @Column(name = "project_partner")
+    private String projectPartner;
+
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
+
+    public String getGeographic() {
+        return geographic;
+    }
+
+    public void setGeographic(String geographic) {
+        this.geographic = geographic;
+    }
+
+    public String getProjectPartner() {
+        return projectPartner;
+    }
+
+    public void setProjectPartner(String projectPartner) {
+        this.projectPartner = projectPartner;
+    }
 
     public Double getLat() {
         return lat;

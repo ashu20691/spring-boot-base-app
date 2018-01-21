@@ -74,11 +74,39 @@ public class Bootstrap implements InitializingBean {
 
     private void createLocations() {
         System.out.println("... creating locations");
-        List<Location> locations= locationRepository.findAll();
-        if(locations.size() == 0){
-            locations.add(new Location(33.808678,-117.918921));
-            locations.add(new Location(33.818038, -117.928492));
-            locations.add(new Location(33.803333, -117.915278));
+        List<Location> locations = locationRepository.findAll();
+        if (locations.size() == 0) {
+            locations.add(new Location(15.3647083, 75.1239547, "Mid-day meal programme in government schools", "Hubli, Karnataka", "The Akshaya Patra Foundation"));
+
+            locations.add(new Location(25.8715807208424, 85.7609939575195, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
+            locations.add(new Location(26.7605545, 83.3731675, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
+            locations.add(new Location(23.838805, 78.7378068, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
+            locations.add(new Location(15.3647083, 75.1239547, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
+
+            locations.add(new Location(28.4594965, 77.0266383, "Nutrition programme for out of school children", "Gurgaon, Haryana", "Sakshi"));
+
+            locations.add(new Location(26.7605545, 83.3731675, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+            locations.add(new Location(25.3176452, 82.9739144, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+            locations.add(new Location(25.4358011, 81.846311, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+            locations.add(new Location(26.7732476, 82.1441643, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+            locations.add(new Location(25.1336987, 82.5644344, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+
+
+            locations.add(new Location(25.8715807208424, 85.7609939575195, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
+            locations.add(new Location(26.7605545, 83.3731675, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
+            locations.add(new Location(23.838805, 78.7378068, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
+            locations.add(new Location(15.3647083, 75.1239547, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
+
+            locations.add(new Location(30.3736743, 76.1451904, "Water sanitation & Hygiene and nutrition programme", "Nabha (Punjab)", "JSI R&T India Foundation"));
+
+            locations.add(new Location(17.0005383, 81.8040344999999, "Anemia and nutrition programme", "Rajahmundri", "Save the Children"));
+
+            locations.add(new Location(29.0523053, 76.9182097, "Improving health & nutrition programme", "Sonipat", "Sakshi"));
+
+            locations.add(new Location(25.0960742, 85.3131194, "Disaster response programme- flood rehabilitation", "Assam and Bihar", "Save the Children."));
+            locations.add(new Location(26.2006043, 92.9375738999999, "Disaster response programme- flood rehabilitation", "Assam and Bihar", "Save the Children."));
+
+
             locationRepository.save(locations);
         }
     }
