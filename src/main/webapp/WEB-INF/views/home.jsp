@@ -3,7 +3,8 @@
 
 <head>
     <title>GSK-CSR</title>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe-E46f1dCFCBvNnanm6K_0ZPufBa4d3A&amp;sensor=false"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe-E46f1dCFCBvNnanm6K_0ZPufBa4d3A&amp;sensor=false"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
@@ -16,15 +17,33 @@
             position: absolute;
             top: 0;
         }
+
         #saveEmployee {
             margin-top: 30%;
             width: 70%;
             border-radius: 25px;
             background-color: #ff7010;
         }
+
+        .slant {
+            -webkit-transform: skewX(-13.5deg);
+            -moz-transform: skewX(-13.5deg);
+            -ms-transform: skewX(-13.5deg);
+            -o-transform: skewX(-14.5deg);
+            transform: skewX(-13.5deg);
+            -webkit-backface-visibility: hidden;
+        }
+
+        #volunteer {
+            margin-top: 3%;
+            width: 20%;
+            border-radius: 25px;
+            background-color: #ff7010;
+        }
+
         #registrationForm input {
-            border:none;
-            text-align:center
+            border: none;
+            text-align: center
         }
 
     </style>
@@ -45,7 +64,9 @@
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: none;margin-bottom: 20% ">
                 <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-                <h4 class="modal-title"><img width="7%" data-dismiss="modal" src="http://www.clker.com/cliparts/X/K/I/w/c/U/icon-previous-orange-brown-md.png"/></h4>
+                <h4 class="modal-title"><img width="7%" data-dismiss="modal"
+                                             src="http://www.clker.com/cliparts/X/K/I/w/c/U/icon-previous-orange-brown-md.png"/>
+                </h4>
             </div>
             <div class="modal-body">
                 <form action="" id="registrationForm" class="form-horizontal">
@@ -84,6 +105,21 @@
      */
     var map;
 
+    var popup = '<div class="cotainer" style="width: 100%">  <div class="panel">    <div class="panel-heading">' +
+            '      <div class=""><big><strong style="color:#ff7010">Mid day meal Programs</strong></big></div>' +
+            '      <div> Partner: The Akshaya Patra Foundation</div>    </div>  ' +
+            '  <hr style="border-color: #ff7010">    <div class="panel-body">   ' +
+            '   <div><span style="background-color:#ff7010;color:white;padding:0.5%;padding-right: 1%">' +
+            '<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/303335-200.png" width="2%" style="margin-left: 1%;margin-right: 1%"/><strong> Program strategy:</strong></span></div>      <br/>      <ul>        <li>Providig fortified nutritious food to school children through mid-day meal programme everyday</li>   ' +
+            '     <li> Providing milk to the children thrice a week</li>     ' +
+            '   <li> Focus on improving school performance, student retention and drop out rates      </ul> ' +
+            '     <div class="row-fluid">        ' +
+            '<div class="col-sm-3 slant" style="background-color:#ff7010;color:white;padding:0.5%">  ' +
+            '        <div><strong>Target stackeholder/s</strong></div>          <div>Gorvernment school children</div>  ' +
+            '      </div>        <div class="col-sm-4">          <div><strong>Location/s</strong></div>       ' +
+            '   <div>Hubli, Karnataka</div>        </div>        <div class="col-sm-4 slant" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
+            '   <div class="col-sm-offset-4 col-sm-12">          <button type="button" id="volunteer" class="btn" data-toggle="modal" data-target="#myModal">VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
+
 
     $.ajax({
         url: '/locations',
@@ -97,7 +133,7 @@
         }
     });
 
-    function initMap(markersData){
+    function initMap(markersData) {
         /*
          * use google maps api built-in mechanism to attach dom events
          */
@@ -140,16 +176,16 @@
                 createMarker({
                     position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
                     map: map,
-                    icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-green.png"
-                }, "<h1>Hi Folk</h1><p>Want to Volunteer?.</p><a href='#' class='' data-toggle='modal' data-target='#myModal'>Please Click here to add yourself</a>");
+                    icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-orange.png"
+                }, popup);
             }
 
         });
     }
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         $('#saveEmployee').click(function () {
-            if($("#registrationForm").valid()){
+            if ($("#registrationForm").valid()) {
                 saveEmployee();
 
             }
@@ -169,9 +205,9 @@
                     email: true
                 },
                 mobile: {
-                    required:true,
-                    minlength:9,
-                    maxlength:10,
+                    required: true,
+                    minlength: 9,
+                    maxlength: 10,
                     number: true
                 }
             },
@@ -179,7 +215,7 @@
             messages: {
                 name: "Please enter your name",
                 email: "Please enter a valid email address",
-                mobile : "Please enter a valid mobile number"
+                mobile: "Please enter a valid mobile number"
             }
         });
     });
@@ -205,7 +241,6 @@
             }
         });
     }
-
 
 
 </script>
