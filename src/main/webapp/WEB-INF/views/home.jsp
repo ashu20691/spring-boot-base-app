@@ -182,7 +182,7 @@
                 createMarker({
                     position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
                     map: map,
-                    icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-orange.png"
+                    icon: "http://res.cloudinary.com/hhxequkzb/image/upload/marker_yyr7sm.png"
                 }, popup.replace("EVENT_LOCATION",markersData[i].geographic).
                         replace("PROJECT_PARTNER",markersData[i].projectPartner).
                         replace("PROGRAM_DETAILS",markersData[i].program));
