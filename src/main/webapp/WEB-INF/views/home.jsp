@@ -152,6 +152,7 @@
         stylers: [{color: "#666666"}]
         }];
 
+
     function initMap(markersData) {
         /*
          * use google maps api built-in mechanism to attach dom events
