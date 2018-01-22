@@ -150,7 +150,7 @@
         featureType: "all",
         elementType: "labels.text.fill",
         stylers: [{color: "#666666"}]
-        }]
+        }];
 
     function initMap(markersData) {
         /*
@@ -167,7 +167,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
-            map.setOptions(mapOptions)
+            map.setOptions(mapOptions);
 
             /*
              * create infowindow (which will be used by markers)
