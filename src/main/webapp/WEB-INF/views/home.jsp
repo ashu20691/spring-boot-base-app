@@ -134,23 +134,7 @@
         }
     });
 
-        var mapOptions = [{
-        featureType: "all",
-        elementType: "all",
-        stylers: [{color: "#eae8e8"}, {saturation: -50}]
-        }, {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{color: "#ffffff"}]
-        }, {
-        featureType: "landscape.natural",
-        elementType: "geometry",
-        stylers: [{color: "#f4f4f4"}]
-        }, {featureType: "landscape", elementType: "labels", stylers: [{visibility: "off"}]}, {
-        featureType: "all",
-        elementType: "labels.text.fill",
-        stylers: [{color: "#666666"}]
-        }];
+    var mapOptions = [{featureType: "all",elementType: "all",stylers: [{color: "#eae8e8"}, {saturation: -50}]}, {featureType: "road",elementType: "geometry",stylers: [{color: "#ffffff"}]}, {featureType: "landscape.natural",elementType: "geometry",stylers: [{color: "#f4f4f4"}]}, {featureType: "landscape", elementType: "labels", stylers: [{visibility: "off"}]}, {featureType: "all",elementType: "labels.text.fill",stylers: [{color: "#666666"}]}];
 
     function initMap(markersData) {
         /*
@@ -167,7 +151,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
-            map.setOptions(mapOptions);
+            map.setOptions({styles: mapOptions});
 
             /*
              * create infowindow (which will be used by markers)
