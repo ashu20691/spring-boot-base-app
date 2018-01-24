@@ -2,6 +2,7 @@ package com.example.controller;
 
 
 import com.example.model.Employee;
+import com.example.repository.LocationRepository;
 import com.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +31,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private LocationRepository locationRepository;
 
     @Autowired
     public EmployeeController(EmployeeService employeeService) {
@@ -58,12 +61,12 @@ public class EmployeeController {
         response.setHeader("Content-Disposition", "attachment; filename=\"employee.csv\"");
         File file = File.createTempFile("employee", ".csv");
         FileWriter fw = new FileWriter(file);
-        fw.write("id,email,name,education");
+        fw.write("id,email,name,education,program details,project partner,locations,lat,lng");
         fw.write("\n");
 
         results.forEach((e) -> {
             try {
-                fw.write(e.getId() + "," + e.getEmail() + "," + e.getName() + "," + e.getMobile());
+                fw.write(e.getId() + "," + e.getEmail() + "," + e.getName() + "," + e.getMobile()+ "," + e.getLocation().getProgram().replace(',','-') + "," + e.getLocation().getProjectPartner().replace(',','-') + "," + e.getLocation().getGeographic().replace(',','-')+ "," + e.getLocation().getLat() + "," + e.getLocation().getLng());
                 fw.write("\n");
             } catch (IOException err) {
                 System.out.println(err);
@@ -88,13 +91,15 @@ public class EmployeeController {
         return new ModelAndView("employees/add", "employee", new Employee());
     }
 
-    @RequestMapping(value = "/employees/save", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> processAdd(@Valid @RequestBody Employee employee,
+
+    @RequestMapping(value = "/employees/save/{locationId}", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> processAdd(@Valid @RequestBody Employee employee,@PathVariable("locationId") Integer locationId,
                              BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
 //            return "employees/add";
         }
+        employee.setLocation(locationRepository.findOne(locationId));
         this.employeeService.saveEmployee(employee);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }

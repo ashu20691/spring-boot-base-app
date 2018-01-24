@@ -22,6 +22,7 @@
     <li class="active"><a href="#">Admin</a></li>
     <li class=""><a href="/employees/pages">Employee</a></li>
     <li class=""><a href="/locations/pages">Location</a></li>
+    <li class=""><a href="/export">Export</a></li>
     <li class=""><a class="float-right" href="javascript:document.getElementById('logout').submit()">Logout</a></li>
   </ol>
   <c:url value="/logout" var="logout" />

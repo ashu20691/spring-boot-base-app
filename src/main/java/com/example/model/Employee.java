@@ -38,6 +38,23 @@ public class Employee implements Serializable {
 	private String mobile;
 
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "location_id")
+	public Location location;
+
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "location_id")
+	public Location getLocation(){
+		return location;
+	};
+
+	public void setLocation(Location location){
+		this.location = location;
+
+	}
+
+
 	public String getMobile() {
 		return mobile;
 	}

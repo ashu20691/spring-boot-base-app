@@ -105,6 +105,12 @@
      */
     var map;
 
+    var selectedLocation = null;
+
+    function selectLocation(locationId) {
+        selectedLocation = locationId;
+    }
+
     var popup = '<div class="cotainer" style="width: 100%">  <div class="panel">    <div class="panel-heading">' +
             '      <div class=""><big><strong style="color:#ff7010">PROGRAM_DETAILS</strong></big></div>' +
             '      <div> Partner: PROJECT_PARTNER</div>    </div>  ' +
@@ -119,7 +125,8 @@
             '        <div><strong>Target stackeholder/s</strong></div>          <div>Gorvernment school children</div>  ' +
             '      </div>        <div class="col-sm-4">          <div><strong>Location/s</strong></div>       ' +
             '   <div>EVENT_LOCATION</div>        </div>        <div class="col-sm-4" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
-            '   <div class="col-sm-offset-4 col-sm-12">          <button type="button" id="volunteer" class="btn" data-toggle="modal" data-target="#myModal">VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
+            '   <div class="col-sm-offset-4 col-sm-12">          ' +
+            '<button type="button" id="volunteer" class="btn" data-toggle="modal" onclick="selectLocation(LOCATION_ID)" data-target="#myModal">VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
 
 
     $.ajax({
@@ -134,7 +141,19 @@
         }
     });
 
-    var mapOptions = [{featureType: "all",elementType: "all",stylers: [{color: "#eae8e8"}, {saturation: -50}]}, {featureType: "road",elementType: "geometry",stylers: [{color: "#ffffff"}]}, {featureType: "landscape.natural",elementType: "geometry",stylers: [{color: "#f4f4f4"}]}, {featureType: "landscape", elementType: "labels", stylers: [{visibility: "off"}]}, {featureType: "all",elementType: "labels.text.fill",stylers: [{color: "#666666"}]}];
+    var mapOptions = [{
+        featureType: "all",
+        elementType: "all",
+        stylers: [{color: "#eae8e8"}, {saturation: -50}]
+    }, {featureType: "road", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
+        featureType: "landscape.natural",
+        elementType: "geometry",
+        stylers: [{color: "#f4f4f4"}]
+    }, {featureType: "landscape", elementType: "labels", stylers: [{visibility: "off"}]}, {
+        featureType: "all",
+        elementType: "labels.text.fill",
+        stylers: [{color: "#666666"}]
+    }];
 
 
     function initMap(markersData) {
@@ -180,12 +199,14 @@
 
             for (var i = 0; i < markersData.length; i++) {
                 createMarker({
-                    position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
-                    map: map,
-                    icon: "http://res.cloudinary.com/hhxequkzb/image/upload/marker_yyr7sm.png"
-                }, popup.replace("EVENT_LOCATION",markersData[i].geographic).
-                        replace("PROJECT_PARTNER",markersData[i].projectPartner).
-                        replace("PROGRAM_DETAILS",markersData[i].program));
+                            position: new google.maps.LatLng(markersData[i].lat, markersData[i].lng),
+                            map: map,
+                            icon: "http://res.cloudinary.com/hhxequkzb/image/upload/marker_yyr7sm.png"
+                        }, popup.replace("EVENT_LOCATION", markersData[i].geographic).
+                                replace("PROJECT_PARTNER", markersData[i].projectPartner).
+                                replace("PROGRAM_DETAILS", markersData[i].program).
+                                replace("LOCATION_ID", markersData[i].id)
+                )
             }
 
         });
@@ -230,7 +251,7 @@
 
     function saveEmployee() {
         $.ajax({
-            url: '/employees/save',
+            url: '/employees/save/' + selectedLocation,
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
