@@ -78,24 +78,24 @@ public class Bootstrap implements InitializingBean {
         if (locations.size() == 0) {
             locations.add(new Location(15.3647083, 75.1239547, "Mid-day meal programme in government schools", "Hubli, Karnataka", "The Akshaya Patra Foundation"));
 
-            locations.add(new Location(25.8715807208424, 85.7609939575195, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
-            locations.add(new Location(26.7605545, 83.3731675, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
-            locations.add(new Location(23.838805, 78.7378068, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
-            locations.add(new Location(15.3647083, 75.1239547, "School nutrition awareness programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "SHARP"));
+            locations.add(new Location(25.8715807208424, 85.7609939575195, "School nutrition awareness programme", "Bihar (Samastipur)", "SHARP"));
+            locations.add(new Location(26.7605545, 83.3731675, "School nutrition awareness programme", "UP (Gorakhpur)", "SHARP"));
+            locations.add(new Location(23.838805, 78.7378068, "School nutrition awareness programme", "MP (Sagar)", "SHARP"));
+            locations.add(new Location(15.3647083, 75.1239547, "School nutrition awareness programme", "Karnataka (Hubli)", "SHARP"));
 
             locations.add(new Location(28.4594965, 77.0266383, "Nutrition programme for out of school children", "Gurgaon, Haryana", "Sakshi"));
 
-            locations.add(new Location(26.7605545, 83.3731675, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
-            locations.add(new Location(25.3176452, 82.9739144, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
-            locations.add(new Location(25.4358011, 81.846311, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
-            locations.add(new Location(26.7732476, 82.1441643, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
-            locations.add(new Location(25.1336987, 82.5644344, "Allied against Dengue", "UP (Gorakhpur, Varanasi, Allahabad, Faizabad, Mirzabad)", "Wish Foundation"));
+            locations.add(new Location(26.7605545, 83.3731675, "Allied against Dengue", "UP (Gorakhpur)", "Wish Foundation"));
+            locations.add(new Location(25.3176452, 82.9739144, "Allied against Dengue", "UP (Varanasi)", "Wish Foundation"));
+            locations.add(new Location(25.4358011, 81.846311, "Allied against Dengue", "UP (Allahabad)", "Wish Foundation"));
+            locations.add(new Location(26.7732476, 82.1441643, "Allied against Dengue", "UP (Faizabad)", "Wish Foundation"));
+            locations.add(new Location(25.1336987, 82.5644344, "Allied against Dengue", "UP (Mirzabad)", "Wish Foundation"));
 
 
-            locations.add(new Location(25.8715807208424, 85.7609939575195, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
-            locations.add(new Location(26.7605545, 83.3731675, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
-            locations.add(new Location(23.838805, 78.7378068, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
-            locations.add(new Location(15.3647083, 75.1239547, "Safe and nutritious food at school programme", "Bihar (Samastipur), UP (Gorakhpur), MP (Sagar)  and Karnataka (Hubli)", "FSSAI"));
+            locations.add(new Location(25.8715807208424, 85.7609939575195, "Safe and nutritious food at school programme", "Bihar (Samastipur)", "FSSAI"));
+            locations.add(new Location(26.7605545, 83.3731675, "Safe and nutritious food at school programme", "UP (Gorakhpur)", "FSSAI"));
+            locations.add(new Location(23.838805, 78.7378068, "Safe and nutritious food at school programme", "MP (Sagar)", "FSSAI"));
+            locations.add(new Location(15.3647083, 75.1239547, "Safe and nutritious food at school programme", "Karnataka (Hubli)", "FSSAI"));
 
             locations.add(new Location(30.3736743, 76.1451904, "Water sanitation & Hygiene and nutrition programme", "Nabha (Punjab)", "JSI R&T India Foundation"));
 
@@ -103,8 +103,8 @@ public class Bootstrap implements InitializingBean {
 
             locations.add(new Location(29.0523053, 76.9182097, "Improving health & nutrition programme", "Sonipat", "Sakshi"));
 
-            locations.add(new Location(25.0960742, 85.3131194, "Disaster response programme- flood rehabilitation", "Assam and Bihar", "Save the Children."));
-            locations.add(new Location(26.2006043, 92.9375738999999, "Disaster response programme- flood rehabilitation", "Assam and Bihar", "Save the Children."));
+            locations.add(new Location(25.0960742, 85.3131194, "Disaster response programme- flood rehabilitation", "Assam", "Save the Children."));
+            locations.add(new Location(26.2006043, 92.9375738999999, "Disaster response programme- flood rehabilitation", "Bihar", "Save the Children."));
 
 
             locationRepository.save(locations);
