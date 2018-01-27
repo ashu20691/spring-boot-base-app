@@ -36,7 +36,7 @@
 
         #volunteer {
             margin-top: 3%;
-            width: 20%;
+            /*width: 20%;*/
             border-radius: 25px;
             background-color: #ff7010;
         }
@@ -125,8 +125,8 @@
             '        <div><strong>Target stackeholder/s</strong></div>          <div>Gorvernment school children</div>  ' +
             '      </div>        <div class="col-sm-4">          <div><strong>Location/s</strong></div>       ' +
             '   <div>EVENT_LOCATION</div>        </div>        <div class="col-sm-4" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
-            '   <div class="col-sm-offset-4 col-sm-12">          ' +
-            '<button type="button" id="volunteer" class="btn" data-toggle="modal" onclick="selectLocation(LOCATION_ID)" data-target="#myModal">VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
+            '   <div class="col-sm-offset-3 col-sm-12">          ' +
+            '<button type="button" id="volunteer" class="btn" data-toggle="modal" onclick="selectLocation(LOCATION_ID)" data-target="#myModal">I would like to VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
 
 
     $.ajax({
@@ -166,8 +166,9 @@
              * create map
              */
             var map = new google.maps.Map(document.getElementById("map_div"), {
-                center: new google.maps.LatLng(28.631451, 77.216667),
-                zoom: 5,
+                center: new google.maps.LatLng(22.631451, 79.216667),
+                zoom: 6,
+                draggable: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
