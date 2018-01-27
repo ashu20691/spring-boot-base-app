@@ -86,6 +86,11 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <label><strong><big style=" text-decoration: underline;">MUD ID</big></strong></label>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
@@ -125,8 +130,11 @@
             '        <div><strong>Target stackeholder/s</strong></div>          <div>Gorvernment school children</div>  ' +
             '      </div>        <div class="col-sm-4">          <div><strong>Location/s</strong></div>       ' +
             '   <div>EVENT_LOCATION</div>        </div>        <div class="col-sm-4" style="background-color:#ff7010;color:white;padding:0.5%">          <div><strong>Projected outreach</strong></div>          <div>50,000 children across 400 schools</div>        </div>      </div>      <div class="form-group">     ' +
-            '   <div class="col-sm-offset-3 col-sm-12">          ' +
-            '<button type="button" id="volunteer" class="btn" data-toggle="modal" onclick="selectLocation(LOCATION_ID)" data-target="#myModal">I would like to VOLUNTEER</button>        </div>      </div>    </div>  </div></div>'
+            ' <div class="col-sm-offset-2 col-sm-6">          ' +
+            '<button type="button" id="volunteer" class="btn" data-toggle="modal" onclick="selectLocation(LOCATION_ID)" data-target="#myModal">I would like to VOLUNTEER</button>' +
+            ' </div> ' +
+            '     <div style="margin-top: 12%">Contact Mr. Joydeep Sen: <span style="text-decoration: underline;color: blue"><bold>joydeep.n.sen@gsk.com</bold></span> to know more</div>' +
+            '  </div>    </div>  </div></div>'
 
 
     $.ajax({
@@ -167,7 +175,7 @@
              */
             var map = new google.maps.Map(document.getElementById("map_div"), {
                 center: new google.maps.LatLng(22.631451, 79.216667),
-                zoom: 6,
+                zoom: 5,
                 draggable: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
@@ -207,8 +215,13 @@
                                 replace("PROJECT_PARTNER", markersData[i].projectPartner).
                                 replace("PROGRAM_DETAILS", markersData[i].program).
                                 replace("LOCATION_ID", markersData[i].id)
-                )
+                );
+                if(markersData[i].projectPartner == "Save the Children" || markersData[i].projectPartner == "WHO"){
+                    console.log("1")
+                    $("#volunteer").css("visibility","hidden");
+                }
             }
+
 
         });
     }
